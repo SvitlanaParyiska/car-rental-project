@@ -4,7 +4,7 @@
 
 ### There is a site for rental car with filter for quick find the needed car, possibility add car to the list of Favorites, see the detailed information about car, and pagination by button "Load more".
 
-## Technology stack: React( Hooks, Router, Redux-Toolkit, Redux-Persist), ReactBootstrap, React-Loader-Spinner, Styled-components, Nitiflix.
+## Technology stack: React( Hooks, Router, Redux-Toolkit, Redux-Persist), Axios, ReactBootstrap, React-Loader-Spinner, Styled-components, Nitiflix.
 
 ![GitHub ReadMe](./src/images/readme.PNG)
 
