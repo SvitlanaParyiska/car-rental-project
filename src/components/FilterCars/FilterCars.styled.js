@@ -10,8 +10,9 @@ export const SearchForm = styled.form`
 
 export const InputBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
-  gap: 17px;
+  gap: 15px;
 `;
 
 export const Title = styled.p`
