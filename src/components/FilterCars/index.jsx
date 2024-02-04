@@ -13,7 +13,6 @@ import { getCarsByFilter } from '../../redux/catalogOperations';
 
 import Form from 'react-bootstrap/Form';
 import Select from 'react-select';
-
 import { getOptions } from 'helpers/filterHelpers';
 import getCustomStyles from './FilterCustomStyles';
 
@@ -37,6 +36,7 @@ function FilterCars() {
         <InputBox>
           <div>
             <Title>Car brand</Title>
+
             <Select
               options={brandOptions}
               aria-label="Car brand"
@@ -53,6 +53,7 @@ function FilterCars() {
               })}
             />
           </div>
+
           <div>
             <Title>Price/ 1hour</Title>
             <Form.Select
@@ -80,7 +81,7 @@ function FilterCars() {
                 To $
               </option>
               {priceArr.map((price, index) => (
-                <option value={`To ${price}$`} key={index}>
+                <option value={price} key={index}>
                   {price}
                 </option>
               ))}

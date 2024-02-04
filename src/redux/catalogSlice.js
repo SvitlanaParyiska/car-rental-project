@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getCarsByFilter, getCatalog } from './catalogOperations';
-
+import Notiflix from 'notiflix';
 
 const catalogInitialState = {
   cars: [],
@@ -54,7 +54,15 @@ const catalogSlice = createSlice({
       .addCase(getCarsByFilter.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.filterCars = payload;
+        if (payload.length > 0) {
+          state.filterCars = payload;
+        } else {
+          state.filterCars = [];
+          state.cars = [];
+          Notiflix.Notify.info('Sorry, nothing ... Try change filter params!', {
+            timeout: 2000,
+          });
+        }
       })
       .addCase(getCarsByFilter.rejected, handleRejected);
   },

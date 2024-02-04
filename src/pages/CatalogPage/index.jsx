@@ -48,9 +48,13 @@ function CatalogPage() {
         ) : (
           <>
             <CatalogList arrayToRender={arrayToRender} />
-            <ButtonLoadMore type="button" onClick={() => setPage(page + 1)}>
-              Load More
-            </ButtonLoadMore>
+
+            {(arrayToRender.length > 0 || arrayToRenderByFilter.length > 0) && (
+              <ButtonLoadMore type="button" onClick={() => setPage(page + 1)}>
+                Load More
+              </ButtonLoadMore>
+            )}
+
             <ScrollUp />
           </>
         )}
