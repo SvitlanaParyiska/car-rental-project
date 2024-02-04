@@ -12,6 +12,7 @@ export const InputBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
+  justify-content: center;
   gap: 15px;
 `;
 
