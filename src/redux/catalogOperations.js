@@ -1,11 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getCarById, getCars } from 'api/catalogApi';
+import { getAllCars, getCars } from 'api/catalogApi';
+import Notiflix from 'notiflix';
 
 export const getCatalog = createAsyncThunk(
   'catalog/getCatalog',
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const data = await getCars();
+      const data = await getCars(page);
+      if (!data.length) {
+        Notiflix.Notify.info("Sorry, that's all cars for today...", {
+          timeout: 2000,
+        });
+      }
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -13,12 +19,20 @@ export const getCatalog = createAsyncThunk(
   }
 );
 
-export const getCarId = createAsyncThunk(
+export const getCarsByFilter = createAsyncThunk(
   'catalog/getCarById',
-  async (carId, thunkAPI) => {
+  async ({ brand, price, maxMileage, minMileage }, thunkAPI) => {
     try {
-      const data = await getCarById(carId);
-      return data;
+      const data = await getAllCars();
+      const filterCars = data.filter(
+        item =>
+          (item.make === brand || !brand) &&
+          (Number(item.rentalPrice.slice(1)) <= Number(price) || !price) &&
+          (item.mileage <= Number(maxMileage) || !maxMileage) &&
+          (item.mileage >= Number(minMileage) || !minMileage)
+      );
+      console.log(brand, price, maxMileage, minMileage, filterCars);
+      return filterCars;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

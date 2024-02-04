@@ -103,5 +103,57 @@ img {
 
 .container {
   margin: 0 auto;
-  padding: 0 128px;
+  padding: 150px 128px;
+  max-width: 1184px;
+}
+
+.container-header {
+  margin: 0 auto;
+  padding: 30px 128px;
+  max-width: 1184px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* Webkit browsers like Safari and Chrome */
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input::placeholder {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  color: #121417;
+}
+
+::-webkit-input-placeholder {
+  color: #121417;
+}
+::-moz-placeholder {
+  color: #121417;
+} /* Firefox 19+ */
+:-moz-placeholder {
+  color: #121417;
+} /* Firefox 18- */
+:-ms-input-placeholder {
+  color: #121417;
 }

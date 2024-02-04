@@ -9,11 +9,18 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { catalogReducer } from './catalogSlice';
+import storage from 'redux-persist/lib/storage';
+import persistReducer from 'redux-persist/es/persistReducer';
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['carsFavorites', 'listFavorites'],
+};
+const userPersistReducer = persistReducer(persistConfig, catalogReducer);
 
 export const store = configureStore({
-  reducer: {
-    cars: catalogReducer,
-  },
+  reducer: userPersistReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

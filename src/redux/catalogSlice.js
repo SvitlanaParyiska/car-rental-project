@@ -1,9 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCarId, getCatalog } from './catalogOperations';
+import { getCarsByFilter, getCatalog } from './catalogOperations';
+
 
 const catalogInitialState = {
   cars: [],
-  carId: null,
+  carsFavorites: [],
+  listFavorites: [],
+  filterCars: [],
   isLoading: false,
   error: null,
 };
@@ -20,23 +23,44 @@ const handleRejected = (state, action) => {
 const catalogSlice = createSlice({
   name: 'catalog',
   initialState: catalogInitialState,
+  reducers: {
+    handleFavorites(state, { payload }) {
+      const index = state.listFavorites.findIndex(item => item === payload.id);
+      if (index !== -1) {
+        state.carsFavorites.splice(index, 1);
+        state.listFavorites.splice(index, 1);
+      } else {
+        state.carsFavorites.push({ ...payload, isFavorite: true });
+        state.listFavorites.push(payload.id);
+      }
+    },
+    clearFiltersCars(state, _) {
+      state.filterCars = [];
+    },
+    clearCars(state, _) {
+      state.cars = [];
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getCatalog.pending, handlePending)
       .addCase(getCatalog.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.cars = payload;
+        state.cars.push(...payload);
       })
       .addCase(getCatalog.rejected, handleRejected)
-      .addCase(getCarId.pending, handlePending)
-      .addCase(getCarId.fulfilled, (state, { payload }) => {
+      .addCase(getCarsByFilter.pending, handlePending)
+      .addCase(getCarsByFilter.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.carId = payload;
+        state.filterCars = payload;
       })
-      .addCase(getCarId.rejected, handleRejected);
+      .addCase(getCarsByFilter.rejected, handleRejected);
   },
 });
+
+export const { handleFavorites, clearFiltersCars, clearCars } =
+  catalogSlice.actions;
 
 export const catalogReducer = catalogSlice.reducer;
