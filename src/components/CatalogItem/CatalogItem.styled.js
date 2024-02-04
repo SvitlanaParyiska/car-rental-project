@@ -56,7 +56,6 @@ export const Title = styled.h3`
 
 export const AddressList = styled.ul`
   display: flex;
-  //gap: 12px;
   justify-content: flex-start;
   margin-top: 8px;
   overflow: hidden;
@@ -80,7 +79,6 @@ export const AddressList = styled.ul`
 
 export const ModelList = styled.ul`
   display: flex;
-  //gap: 12px;
   justify-content: flex-start;
   margin-top: 4px;
   overflow: hidden;

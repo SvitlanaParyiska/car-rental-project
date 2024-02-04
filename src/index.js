@@ -10,13 +10,13 @@ import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  //<React.StrictMode>
-  <Provider store={store}>
-    <PersistGate loading={<Loader />} persistor={persistor}>
-      <BrowserRouter basename="/car-rental-project">
-        <App />
-      </BrowserRouter>
-    </PersistGate>
-  </Provider>
-  //  </React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={<Loader />} persistor={persistor}>
+        <BrowserRouter basename="/car-rental-project">
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>
 );

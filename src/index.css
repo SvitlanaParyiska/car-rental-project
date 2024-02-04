@@ -137,24 +137,3 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-input::placeholder {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.11;
-  opacity: 1;
-  color: #121417;
-}
-
-::-webkit-input-placeholder {
-  color: #121417;
-}
-::-moz-placeholder {
-  color: #121417;
-} /* Firefox 19+ */
-:-moz-placeholder {
-  color: #121417;
-} /* Firefox 18- */
-:-ms-input-placeholder {
-  color: #121417;
-}

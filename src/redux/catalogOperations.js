@@ -31,7 +31,6 @@ export const getCarsByFilter = createAsyncThunk(
           (item.mileage <= Number(maxMileage) || !maxMileage) &&
           (item.mileage >= Number(minMileage) || !minMileage)
       );
-      console.log(brand, price, maxMileage, minMileage, filterCars);
       return filterCars;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

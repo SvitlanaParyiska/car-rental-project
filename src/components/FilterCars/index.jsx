@@ -12,7 +12,10 @@ import { useDispatch } from 'react-redux';
 import { getCarsByFilter } from '../../redux/catalogOperations';
 
 import Form from 'react-bootstrap/Form';
-import { getPrice } from 'helpers/formHelpers';
+import Select from 'react-select';
+
+import { getOptions } from 'helpers/filterHelpers';
+import getCustomStyles from './FilterCustomStyles';
 
 function FilterCars() {
   const [brand, setBrand] = useState('');
@@ -23,9 +26,10 @@ function FilterCars() {
 
   const searchCars = event => {
     event.preventDefault();
-    console.log(brand, price, maxMileage, minMileage);
     dispatch(getCarsByFilter({ brand, price, maxMileage, minMileage }));
   };
+
+  const brandOptions = getOptions(arrCarsBrand, 'Enter the text');
 
   return (
     <div>
@@ -33,39 +37,22 @@ function FilterCars() {
         <InputBox>
           <div>
             <Title>Car brand</Title>
-
-            <Form.Select
-              aria-label="Default select example"
-              defaultValue=""
-              name="brand"
+            <Select
+              options={brandOptions}
+              aria-label="Car brand"
+              styles={getCustomStyles}
+              placeholder="Enter the text"
               onChange={e => {
-                setBrand(e.target.value);
+                setBrand(e.value);
               }}
-              style={{
-                width: '224px',
-                height: '48px',
-                border: 'none',
-                backgroundColor: '#f7f7fb',
-                borderRadius: '14px',
-                paddingLeft: '18px',
-                fontFamily: 'inherit',
-                fontWeight: '500',
-                fontSize: ' 18px',
-                lineHeight: '1.11',
-                color: '#121417',
-              }}
-            >
-              <option value="" disabled>
-                Enter the text
-              </option>
-              {arrCarsBrand.map((brand, index) => (
-                <option value={brand} key={index}>
-                  {brand}
-                </option>
-              ))}
-            </Form.Select>
+              theme={theme => ({
+                ...theme,
+                colors: {
+                  ...theme.colors,
+                },
+              })}
+            />
           </div>
-
           <div>
             <Title>Price/ 1hour</Title>
             <Form.Select
@@ -73,7 +60,7 @@ function FilterCars() {
               name="price"
               defaultValue=""
               onChange={e => {
-                setPrice(getPrice(e.target.value));
+                setPrice(e.target.value);
               }}
               style={{
                 width: '125px',
@@ -102,55 +89,59 @@ function FilterCars() {
           <div>
             <Title>Сar mileage / km</Title>
             <MileageBox>
-              <Form.Control
-                id="mileage"
-                aria-describedby="min cars mileage"
-                aria-label="min Mileage"
-                type="number"
-                name="mileage-min"
-                placeholder="From"
-                value={minMileage}
-                onChange={e => {
-                  setMinMileage(e.target.value);
-                }}
-                style={{
-                  width: '136px',
-                  height: '48px',
-                  border: 'none',
-                  backgroundColor: '#f7f7fb',
-                  borderRadius: '14px 0 0 14px',
-                  paddingLeft: '24px',
-                  fontFamily: 'inherit',
-                  fontWeight: '500',
-                  fontSize: ' 18px',
-                  lineHeight: '1.11',
-                  color: '#121417',
-                  borderRight: '1px solid rgba(138, 138, 137, 0.2)',
-                }}
-              />
-              <Form.Control
-                aria-label="max Mileage"
-                type="number"
-                name="mileage-max"
-                placeholder="To"
-                value={maxMileage}
-                onChange={e => {
-                  setMaxMileage(e.target.value);
-                }}
-                style={{
-                  width: '136px',
-                  height: '48px',
-                  border: 'none',
-                  paddingLeft: '24px',
-                  backgroundColor: '#f7f7fb',
-                  borderRadius: '0 14px 14px 0',
-                  fontFamily: 'inherit',
-                  fontWeight: '500',
-                  fontSize: ' 18px',
-                  lineHeight: '1.11',
-                  color: '#121417',
-                }}
-              />
+              <div style={{ position: 'relative' }}>
+                <span>{`From ${minMileage.replace(
+                  /\B(?=(\d{3})+(?!\d))/g,
+                  ','
+                )}`}</span>
+                <Form.Control
+                  id="mileage"
+                  aria-describedby="min cars mileage"
+                  aria-label="min Mileage"
+                  type="number"
+                  name="mileage-min"
+                  autoComplete="off"
+                  value={minMileage}
+                  onChange={e => {
+                    setMinMileage(e.target.value);
+                  }}
+                  style={{
+                    width: '136px',
+                    height: '48px',
+                    border: 'none',
+                    backgroundColor: '#f7f7fb',
+                    borderRadius: '14px 0 0 14px',
+                    paddingLeft: '24px',
+                    color: '#f7f7fb',
+                    borderRight: '1px solid rgba(138, 138, 137, 0.2)',
+                  }}
+                />
+              </div>
+              <div style={{ position: 'relative' }}>
+                <span>{`To ${maxMileage.replace(
+                  /\B(?=(\d{3})+(?!\d))/g,
+                  ','
+                )}`}</span>
+                <Form.Control
+                  aria-label="max Mileage"
+                  type="number"
+                  name="mileage-max"
+                  autoComplete="off"
+                  value={maxMileage}
+                  onChange={e => {
+                    setMaxMileage(e.target.value);
+                  }}
+                  style={{
+                    width: '136px',
+                    height: '48px',
+                    border: 'none',
+                    paddingLeft: '24px',
+                    backgroundColor: '#f7f7fb',
+                    borderRadius: '0 14px 14px 0',
+                    color: '#f7f7fb',
+                  }}
+                />
+              </div>
             </MileageBox>
           </div>
           <ButtonSearch type="submit">Search</ButtonSearch>

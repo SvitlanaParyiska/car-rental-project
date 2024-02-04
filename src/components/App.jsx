@@ -6,11 +6,12 @@ import '../index.css';
 
 import SharedLayout from './SharedLayout';
 import { Suspense } from 'react';
+import Loader from './Loader';
 
 function App() {
   return (
     <>
-      <Suspense fallback={'Loading.....'}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<HomePage />} />
