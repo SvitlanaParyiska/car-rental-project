@@ -9,5 +9,3 @@
 ![GitHub ReadMe](./src/images/readme.PNG)
 
 ![GitHub ReadMe](./src/images/readmetwo.PNG)
-
-[Link to site](https://svitlanaparyiska.github.io/car-rental-project/ 'Site CarRental')
