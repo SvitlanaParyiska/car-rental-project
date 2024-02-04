@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/car-rental-project/static/css/main.e699028e.css",
-    "main.js": "/car-rental-project/static/js/main.e9029b65.js",
+    "main.css": "/car-rental-project/static/css/main.1e94ba7b.css",
+    "main.js": "/car-rental-project/static/js/main.cf3fef94.js",
     "static/media/car.png": "/car-rental-project/static/media/car.33aca7664d0da5b68373.png",
     "static/media/Manrope-Regular.ttf": "/car-rental-project/static/media/Manrope-Regular.892a89f7015e492f6e21.ttf",
     "static/media/Manrope-Medium.ttf": "/car-rental-project/static/media/Manrope-Medium.101a50f661e51b761ca1.ttf",
@@ -14,11 +14,11 @@
     "static/media/Manrope-Semibold.woff2": "/car-rental-project/static/media/Manrope-Semibold.0d44fe833dd4c7229544.woff2",
     "static/media/sprite.svg": "/car-rental-project/static/media/sprite.191e8913310d8373ea55effc450046de.svg",
     "index.html": "/car-rental-project/index.html",
-    "main.e699028e.css.map": "/car-rental-project/static/css/main.e699028e.css.map",
-    "main.e9029b65.js.map": "/car-rental-project/static/js/main.e9029b65.js.map"
+    "main.1e94ba7b.css.map": "/car-rental-project/static/css/main.1e94ba7b.css.map",
+    "main.cf3fef94.js.map": "/car-rental-project/static/js/main.cf3fef94.js.map"
   },
   "entrypoints": [
-    "static/css/main.e699028e.css",
-    "static/js/main.e9029b65.js"
+    "static/css/main.1e94ba7b.css",
+    "static/js/main.cf3fef94.js"
   ]
 }
