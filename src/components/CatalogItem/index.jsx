@@ -19,6 +19,7 @@ import {
 } from './CatalogItem.styled';
 import { useDispatch } from 'react-redux';
 import {
+  getAccent,
   getAddressCity,
   getAddressCountry,
   getPremiumCar,
@@ -29,15 +30,6 @@ function CatalogItem({ car, index }) {
   const [isShowModal, setIsShowModal] = useState(false);
   const [showCar, setShowCar] = useState({});
   const dispatch = useDispatch();
-
-  const getAccent = (arr1, arr2) => {
-    const newArr = [...arr1, ...arr2];
-    const accent = newArr.reduce(
-      (a, c) => (c.length < a.length ? c : a),
-      newArr[0]
-    );
-    return accent;
-  };
 
   const showModal = () => {
     setIsShowModal(true);

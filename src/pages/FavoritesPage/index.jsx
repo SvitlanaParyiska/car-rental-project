@@ -12,7 +12,7 @@ function FavoritesPage() {
       <div className="container">
         {favCars.length > 0 ? (
           <>
-            <h1 style={{ marginBottom: 30, textAlign: 'center' }}>
+            <h1 style={{ marginBottom: '50px', textAlign: 'center' }}>
               Your favorites cars
             </h1>
             <CatalogList arrayToRender={favCars} />

@@ -35,3 +35,12 @@ export const getPremiumCar = string => {
   }
   return false;
 };
+
+export const getAccent = (arr1, arr2) => {
+  const newArr = [...arr1, ...arr2];
+  const accent = newArr.reduce(
+    (a, c) => (c.length < a.length ? c : a),
+    newArr[0]
+  );
+  return accent;
+};

@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { getCarsByFilter } from '../../redux/catalogOperations';
 
 import Form from 'react-bootstrap/Form';
+import { getPrice } from 'helpers/formHelpers';
 
 function FilterCars() {
   const [brand, setBrand] = useState('');
@@ -34,7 +35,8 @@ function FilterCars() {
             <Title>Car brand</Title>
 
             <Form.Select
-              aria-label="Car brand"
+              aria-label="Default select example"
+              defaultValue=""
               name="brand"
               onChange={e => {
                 setBrand(e.target.value);
@@ -53,7 +55,7 @@ function FilterCars() {
                 color: '#121417',
               }}
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Enter the text
               </option>
               {arrCarsBrand.map((brand, index) => (
@@ -69,8 +71,9 @@ function FilterCars() {
             <Form.Select
               aria-label="Car price"
               name="price"
+              defaultValue=""
               onChange={e => {
-                setPrice(e.target.value);
+                setPrice(getPrice(e.target.value));
               }}
               style={{
                 width: '125px',
@@ -86,12 +89,12 @@ function FilterCars() {
                 color: '#121417',
               }}
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 To $
               </option>
-              {priceArr.map((brand, index) => (
-                <option value={brand} key={index}>
-                  {brand}
+              {priceArr.map((price, index) => (
+                <option value={`To ${price}$`} key={index}>
+                  {price}
                 </option>
               ))}
             </Form.Select>
