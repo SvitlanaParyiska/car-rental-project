@@ -3,6 +3,13 @@ import styled from 'styled-components';
 
 export const HeaderStile = styled.header`
   background-color: #27408b;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3),
+    -23px 0 20px -23px rgba(0, 0, 0, 0.6), 23px 0 20px -23px rgba(0, 0, 0, 0.6),
+    inset 0 0 40px rgba(0, 0, 0, 0.1);
 `;
 
 export const NavBox = styled.nav`
@@ -11,8 +18,8 @@ export const NavBox = styled.nav`
 `;
 
 export const LinkStyled = styled(NavLink)`
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 400;
+  font-size: 24px;
   line-height: 1.43;
   color: #fff;
 

@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCarsByFilter, getCatalog } from './catalogOperations';
+import {
+  getCarsByFilter,
+  getCatalog,
+  getTotalPages,
+} from './catalogOperations';
 import Notiflix from 'notiflix';
 
 const catalogInitialState = {
@@ -9,6 +13,7 @@ const catalogInitialState = {
   filterCars: [],
   isLoading: false,
   error: null,
+  totalPages: 0,
 };
 
 const handlePending = state => {
@@ -50,6 +55,13 @@ const catalogSlice = createSlice({
         state.cars.push(...payload);
       })
       .addCase(getCatalog.rejected, handleRejected)
+      .addCase(getTotalPages.pending, handlePending)
+      .addCase(getTotalPages.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.totalPages = payload;
+      })
+      .addCase(getTotalPages.rejected, handleRejected)
       .addCase(getCarsByFilter.pending, handlePending)
       .addCase(getCarsByFilter.fulfilled, (state, { payload }) => {
         state.isLoading = false;

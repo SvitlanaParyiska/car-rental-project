@@ -1,9 +1,14 @@
 import React from 'react';
-import { AdvantagesList, HomePageBox } from './HomePage.styled';
+import {
+  AdvantagesList,
+  HomePageBox,
+  LinkStyled,
+  Section,
+} from './HomePage.styled';
 
 function HomePage() {
   return (
-    <section>
+    <Section>
       <HomePageBox className="container">
         <h1 className="visually-hidden">About us</h1>
         <div>
@@ -15,8 +20,9 @@ function HomePage() {
             <li>Cost-Effectiveness</li>
           </AdvantagesList>
         </div>
+        <LinkStyled to="/catalog">Catalog</LinkStyled>
       </HomePageBox>
-    </section>
+    </Section>
   );
 }
 

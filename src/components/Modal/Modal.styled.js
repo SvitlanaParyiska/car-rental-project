@@ -9,6 +9,7 @@ export const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
   background-color: rgba(18, 20, 23, 0.5);
 `;
 
@@ -20,7 +21,6 @@ export const ModalDiv = styled.div`
   max-width: 541px;
   max-height: 85%;
   padding: 40px;
-  z-index: 9999;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -59,7 +59,7 @@ export const ModalDiv = styled.div`
 
 export const ImageThumb = styled.div`
   border-radius: 14px;
-  width: 461px;
+  max-width: 461px;
   height: 248px;
   overflow: hidden;
 `;

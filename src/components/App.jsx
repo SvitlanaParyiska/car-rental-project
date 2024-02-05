@@ -1,12 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import HomePage from 'pages/HomePage';
-import CatalogPage from 'pages/CatalogPage';
-import FavoritesPage from 'pages/FavoritesPage';
+
 import '../index.css';
 
 import SharedLayout from './SharedLayout';
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import Loader from './Loader';
+const CatalogPage = lazy(() => import('../pages/CatalogPage'));
+const FavoritesPage = lazy(() => import('../pages/FavoritesPage'));
 
 function App() {
   return (

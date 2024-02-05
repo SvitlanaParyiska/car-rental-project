@@ -41,7 +41,7 @@ export const PriceValue = styled.span`
   line-height: 1.11;
   color: #121417;
   opacity: 1;
-  z-index: 1000;
+  z-index: 1;
 `;
 
 export const MileageBox = styled.div`

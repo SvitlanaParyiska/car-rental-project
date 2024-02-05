@@ -7,6 +7,7 @@ export const selectPage = state => state.page;
 export const selectFilterCars = state => state.filterCars;
 export const selectListFavorites = state => state.listFavorites;
 export const selectCarsFavorites = state => state.carsFavorites;
+export const selectTotalPages = state => state.totalPages;
 
 export const selectCarsWithFlag = createSelector(
   [selectCars, selectListFavorites],

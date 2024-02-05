@@ -104,7 +104,7 @@ img {
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 130px 20px 30px 20px;
 }
 
 @media screen and (min-width: 375px) {
@@ -114,7 +114,7 @@ img {
 }
 @media screen and (min-width: 767px) {
   .container {
-    padding: 50px 32px;
+    padding: 150px 32px 50px 32px;
     max-width: 768px;
   }
 }
@@ -129,7 +129,6 @@ img {
 .container-header {
   width: 100%;
   margin: 0 auto;
-  padding: 30px 20px;
 }
 
 @media screen and (min-width: 375px) {
@@ -139,7 +138,7 @@ img {
 }
 @media screen and (min-width: 767px) {
   .container-header {
-    padding: 50px 32px;
+    padding: 20px 32px;
     max-width: 768px;
   }
 }
