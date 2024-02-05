@@ -3,6 +3,7 @@ import {
   ButtonSearch,
   InputBox,
   MileageBox,
+  PriceValue,
   SearchForm,
   Title,
 } from './FilterCars.styled';
@@ -14,7 +15,7 @@ import { getCarsByFilter } from '../../redux/catalogOperations';
 import Form from 'react-bootstrap/Form';
 import Select from 'react-select';
 import { getOptions } from 'helpers/filterHelpers';
-import getCustomStyles from './FilterCustomStyles';
+import { brandCustomStyle, priceCustomStyle } from './FilterCustomStyles';
 
 function FilterCars() {
   const [brand, setBrand] = useState('');
@@ -25,10 +26,12 @@ function FilterCars() {
 
   const searchCars = event => {
     event.preventDefault();
+    console.log(brand, price, maxMileage, minMileage);
     dispatch(getCarsByFilter({ brand, price, maxMileage, minMileage }));
   };
 
-  const brandOptions = getOptions(arrCarsBrand, 'Enter the text');
+  const brandOptions = getOptions(arrCarsBrand, 'All brand');
+  const priceOption = getOptions(priceArr, 'All price');
 
   return (
     <div>
@@ -36,56 +39,28 @@ function FilterCars() {
         <InputBox>
           <div>
             <Title>Car brand</Title>
-
             <Select
               options={brandOptions}
               aria-label="Car brand"
-              styles={getCustomStyles}
+              styles={brandCustomStyle}
               placeholder="Enter the text"
               onChange={e => {
                 setBrand(e.value);
               }}
-              theme={theme => ({
-                ...theme,
-                colors: {
-                  ...theme.colors,
-                },
-              })}
             />
           </div>
-
-          <div>
+          <div style={{ position: 'relative' }}>
+            <PriceValue>{`To ${price}$`}</PriceValue>
             <Title>Price/ 1hour</Title>
-            <Form.Select
-              aria-label="Car price"
-              name="price"
-              defaultValue=""
+            <Select
+              options={priceOption}
+              aria-label="Car prices"
+              styles={priceCustomStyle}
+              placeholder=""
               onChange={e => {
-                setPrice(e.target.value);
+                setPrice(e.value);
               }}
-              style={{
-                width: '125px',
-                height: '48px',
-                border: 'none',
-                backgroundColor: '#f7f7fb',
-                borderRadius: '14px',
-                paddingLeft: '18px',
-                fontFamily: 'inherit',
-                fontWeight: '500',
-                fontSize: ' 18px',
-                lineHeight: '1.11',
-                color: '#121417',
-              }}
-            >
-              <option value="" disabled>
-                To $
-              </option>
-              {priceArr.map((price, index) => (
-                <option value={price} key={index}>
-                  {price}
-                </option>
-              ))}
-            </Form.Select>
+            />
           </div>
           <div>
             <Title>Сar mileage / km</Title>
@@ -101,6 +76,7 @@ function FilterCars() {
                   aria-label="min Mileage"
                   type="number"
                   name="mileage-min"
+                  className="input-form"
                   autoComplete="off"
                   value={minMileage}
                   onChange={e => {
@@ -114,6 +90,7 @@ function FilterCars() {
                     borderRadius: '14px 0 0 14px',
                     paddingLeft: '24px',
                     color: '#f7f7fb',
+                    cursor: 'pointer',
                     borderRight: '1px solid rgba(138, 138, 137, 0.2)',
                   }}
                 />
@@ -124,6 +101,7 @@ function FilterCars() {
                   ','
                 )}`}</span>
                 <Form.Control
+                  className="input-form"
                   aria-label="max Mileage"
                   type="number"
                   name="mileage-max"
@@ -137,6 +115,7 @@ function FilterCars() {
                     height: '48px',
                     border: 'none',
                     paddingLeft: '24px',
+                    cursor: 'pointer',
                     backgroundColor: '#f7f7fb',
                     borderRadius: '0 14px 14px 0',
                     color: '#f7f7fb',

@@ -175,3 +175,7 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.input-form:is(:hover, :focus) {
+  outline: 1px solid rgba(18, 20, 23, 0.1);
+}

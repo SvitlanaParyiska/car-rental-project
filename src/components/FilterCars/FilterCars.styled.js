@@ -24,6 +24,26 @@ export const Title = styled.p`
   color: #8a8a89;
 `;
 
+export const PriceValue = styled.span`
+  position: absolute;
+  display: inline-block;
+  top: 50px;
+  left: 14px;
+  min-width: 80px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: inherit;
+  transform: translateY(-50%);
+  background-color: #f7f7fb;
+
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  color: #121417;
+  opacity: 1;
+  z-index: 1000;
+`;
+
 export const MileageBox = styled.div`
   display: flex;
   gap: 0px;
@@ -33,6 +53,7 @@ export const MileageBox = styled.div`
     top: 26px;
     left: 24px;
     font-size: 16px;
+    cursor: pointer;
     font-family: inherit;
     transform: translateY(-50%);
     background-color: #f7f7fb;
