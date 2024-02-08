@@ -11,7 +11,7 @@ function HomePage() {
             Rent your dream car today with <span>Luxor Car Rental</span>
           </h2>
           <p>Easy way to travel with comfort </p>
-          <LinkStyled to="/catalog">Select a car</LinkStyled>
+          <LinkStyled to="/catalog">Find a car</LinkStyled>
         </TitleHome>
       </HomePageBox>
     </Section>

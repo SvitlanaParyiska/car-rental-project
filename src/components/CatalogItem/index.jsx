@@ -55,7 +55,11 @@ function CatalogItem({ car, index }) {
         <GradientBox />
       </ImgThumb>
 
-      <BtnFav type="button" onClick={handleFav}>
+      <BtnFav
+        type="button"
+        aria-label="add or delete car from favorites"
+        onClick={handleFav}
+      >
         {car.isFavorite ? (
           <SvgFavAdd>
             <use href={`${sprite}#icon-normal`}></use>
