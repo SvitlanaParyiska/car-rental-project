@@ -25,25 +25,20 @@ const catalogSlice = createSlice({
   name: 'catalog',
   initialState: catalogInitialState,
   reducers: {
-    handleFavorites(state, { payload }) {
-      const index = state.carsFavorites.findIndex(
-        item => item.id === payload.id
-      );
-      if (index !== -1) {
-        state.carsFavorites.splice(index, 1);
-      } else {
-        state.carsFavorites.push({ ...payload, isFavorite: true });
-      }
+    deleteFavorite(state, { payload }) {
+      const index = state.carsFavorites.findIndex(item => item.id === payload);
+      state.carsFavorites.splice(index, 1);
+    },
+    addFavorite(state, { payload }) {
+      state.carsFavorites.push({ ...payload });
     },
 
     clearFiltersCars(state, _) {
       state.filterCars = [];
     },
-
     clearCars(state, _) {
       state.cars = [];
     },
-
     getCarsByFilter(state, { payload }) {
       const carsByFilter = state.allCars.filter(
         item =>
@@ -82,25 +77,15 @@ const catalogSlice = createSlice({
         state.allCars = payload;
       })
       .addCase(getTotalPages.rejected, handleRejected);
-    // .addCase(getCarsByFilter.pending, handlePending)
-    // .addCase(getCarsByFilter.fulfilled, (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.error = null;
-    //   if (payload.length > 0) {
-    //     state.filterCars = payload;
-    //   } else {
-    //     state.filterCars = [];
-    //     state.cars = [];
-    //     Notiflix.Notify.info('Sorry, nothing ... Try change filter params!', {
-    //       timeout: 2000,
-    //     });
-    //   }
-    // })
-    // .addCase(getCarsByFilter.rejected, handleRejected);
   },
 });
 
-export const { handleFavorites, clearFiltersCars, clearCars, getCarsByFilter } =
-  catalogSlice.actions;
+export const {
+  deleteFavorite,
+  addFavorite,
+  clearFiltersCars,
+  clearCars,
+  getCarsByFilter,
+} = catalogSlice.actions;
 
 export const catalogReducer = catalogSlice.reducer;

@@ -6,8 +6,8 @@ import { getCatalog, getTotalPages } from '../../redux/catalogOperations';
 import { ButtonLoadMore } from './CatalogPage.styled';
 import { useSelector } from 'react-redux';
 import {
-  selectCarsWithFlag,
-  selectCarsWithFlagByFilter,
+  selectCars,
+  selectFilterCars,
   selectIsLoading,
   selectTotalPages,
 } from '../../redux/catalogSelectors';
@@ -18,8 +18,9 @@ import Loader from 'components/Loader';
 function CatalogPage() {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
-  const arrayToRender = useSelector(selectCarsWithFlag);
-  const arrayToRenderByFilter = useSelector(selectCarsWithFlagByFilter);
+
+  const arrayToRender = useSelector(selectCars);
+  const arrayToRenderByFilter = useSelector(selectFilterCars);
   const totalPages = useSelector(selectTotalPages);
   const loading = useSelector(selectIsLoading);
 

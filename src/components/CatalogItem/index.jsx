@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import sprite from '../../images/sprite.svg';
 import defaultPicture from '../../images/images.jpg';
 import Modal from 'components/Modal';
-import { handleFavorites } from '../../redux/catalogSlice';
+import { addFavorite, deleteFavorite } from '../../redux/catalogSlice';
 import {
   AddressList,
   BtnFav,
@@ -17,19 +17,30 @@ import {
   Title,
   TitleBox,
 } from './CatalogItem.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getAccent,
   getAddressCity,
   getAddressCountry,
   getPremiumCar,
 } from 'helpers/itemCarHelpers';
+import { selectCarsFavorites } from '../../redux/catalogSelectors';
 import Notiflix from 'notiflix';
 
 function CatalogItem({ car, index }) {
   const [isShowModal, setIsShowModal] = useState(false);
   const [showCar, setShowCar] = useState({});
+  const [isFavorite, setIsFavorite] = useState(false);
+  const favCarsArray = useSelector(selectCarsFavorites);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (favCarsArray.some(item => item.id === car.id)) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  }, [car.id, favCarsArray]);
 
   const showModal = () => {
     setIsShowModal(true);
@@ -42,10 +53,17 @@ function CatalogItem({ car, index }) {
   };
 
   const handleFav = () => {
-    dispatch(handleFavorites(car));
-    Notiflix.Notify.success('List of favorites successful updated!', {
-      timeout: 2000,
-    });
+    if (isFavorite) {
+      dispatch(deleteFavorite(car.id));
+      Notiflix.Notify.success('Car was successful deleted!', {
+        timeout: 2000,
+      });
+    } else {
+      dispatch(addFavorite(car));
+      Notiflix.Notify.success('Car was successful added!', {
+        timeout: 2000,
+      });
+    }
   };
 
   return (
@@ -60,7 +78,7 @@ function CatalogItem({ car, index }) {
         aria-label="add or delete car from favorites"
         onClick={handleFav}
       >
-        {car.isFavorite ? (
+        {isFavorite ? (
           <SvgFavAdd>
             <use href={`${sprite}#icon-normal`}></use>
           </SvgFavAdd>
