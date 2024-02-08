@@ -3,8 +3,8 @@ import '../index.css';
 import SharedLayout from './SharedLayout';
 import { lazy } from 'react';
 const HomePage = lazy(() => import('../pages/HomePage'));
-const CatalogPage = lazy(() => import('../pages/CatalogPage'));
-const FavoritesPage = lazy(() => import('../pages/FavoritesPage'));
+const CatalogPage = lazy(() => import('../pages/CatalogPage/index'));
+const FavoritesPage = lazy(() => import('../pages/FavoritesPage/index'));
 
 function App() {
   return (
