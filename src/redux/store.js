@@ -15,7 +15,7 @@ import persistReducer from 'redux-persist/es/persistReducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['carsFavorites', 'listFavorites'],
+  whitelist: ['carsFavorites', 'allCars'],
 };
 const userPersistReducer = persistReducer(persistConfig, catalogReducer);
 

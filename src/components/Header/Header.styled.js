@@ -16,12 +16,17 @@ export const HeaderStile = styled.header`
 
 export const NavBox = styled.nav`
   display: flex;
-  gap: 30px;
+
+  @media screen and (max-width: 767px) {
+    gap: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    gap: 30px;
+  }
 `;
 
 export const LinkStyled = styled(NavLink)`
   font-weight: 400;
-  font-size: 24px;
   line-height: 1.43;
   color: #fff;
 
@@ -30,6 +35,13 @@ export const LinkStyled = styled(NavLink)`
   &:hover,
   &:focus {
     color: #3470ff;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
   }
 `;
 

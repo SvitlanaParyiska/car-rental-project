@@ -44,3 +44,4 @@ export const getAccent = (arr1, arr2) => {
   );
   return accent;
 };
+

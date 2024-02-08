@@ -8,7 +8,6 @@ function SharedLayout() {
     <>
       <Header />
       <main>
-        {/* {loading && <Loader />} */}
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>

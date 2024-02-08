@@ -5,15 +5,14 @@ export const selectIsLoading = state => state.isLoading;
 export const selectError = state => state.error;
 export const selectPage = state => state.page;
 export const selectFilterCars = state => state.filterCars;
-export const selectListFavorites = state => state.listFavorites;
 export const selectCarsFavorites = state => state.carsFavorites;
 export const selectTotalPages = state => state.totalPages;
 
 export const selectCarsWithFlag = createSelector(
-  [selectCars, selectListFavorites],
-  (cars, listFavorites) => {
+  [selectCars, selectCarsFavorites],
+  (cars, carsFavorites) => {
     const result = cars.map(car => {
-      if (listFavorites.includes(car.id)) {
+      if (carsFavorites.find(item => item.id === car.id)) {
         return { ...car, isFavorite: true };
       } else {
         return { ...car, isFavorite: false };
@@ -24,10 +23,10 @@ export const selectCarsWithFlag = createSelector(
 );
 
 export const selectCarsWithFlagByFilter = createSelector(
-  [selectFilterCars, selectListFavorites],
-  (cars, listFavorites) => {
+  [selectFilterCars, selectCarsFavorites],
+  (cars, carsFavorites) => {
     const result = cars.map(car => {
-      if (listFavorites.includes(car.id)) {
+      if (carsFavorites.find(item => item.id === car.id)) {
         return { ...car, isFavorite: true };
       } else {
         return { ...car, isFavorite: false };
