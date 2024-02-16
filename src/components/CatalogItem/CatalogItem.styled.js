@@ -11,7 +11,7 @@ export const ImgThumb = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 274px;
+  max-width: 274px;
   height: 268px;
   object-fit: cover;
 `;

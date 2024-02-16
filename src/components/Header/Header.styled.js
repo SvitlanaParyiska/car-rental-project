@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const HeaderStile = styled.header`
@@ -16,6 +16,7 @@ export const HeaderStile = styled.header`
 
 export const NavBox = styled.nav`
   display: flex;
+  justify-content: space-between;
 
   @media screen and (max-width: 767px) {
     gap: 10px;
@@ -25,6 +26,10 @@ export const NavBox = styled.nav`
   }
 `;
 
+export const ListBox = styled.div`
+  display: flex;
+  gap: 20px;
+`;
 export const LinkStyled = styled(NavLink)`
   font-weight: 400;
   line-height: 1.43;
@@ -48,10 +53,43 @@ export const LinkStyled = styled(NavLink)`
 export const SvgLogo = styled.svg`
   width: 30px;
   height: 30px;
+  fill: currentColor;
+`;
+
+export const LinkLogo = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #000;
+  transition: var(--transition);
+
+  > p {
+    font-weight: 600;
+    color: currentColor;
+  }
+
+  &:hover,
+  &:focus {
+    color: #3470ff;
+  }
+`;
+
+export const BurgerIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #fff;
+  display: block;
+  cursor: pointer;
   transition: var(--transition);
 
   &:hover,
   &:focus {
-    fill: #3470ff;
+    stroke: #3470ff;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
   }
 `;

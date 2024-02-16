@@ -4,8 +4,12 @@ export const SearchForm = styled.form`
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 50px;
-  max-width: 859px;
+  max-width: 650px;
   background-color: #fff;
+
+  @media screen and (min-width: 1439px) {
+    max-width: 859px;
+  }
 `;
 
 export const InputBox = styled.div`

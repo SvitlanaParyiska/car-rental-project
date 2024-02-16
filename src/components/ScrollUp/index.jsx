@@ -8,7 +8,7 @@ function ScrollUp() {
     <ScrollToTop
       style={{
         bottom: '50px',
-        right: '50px',
+        right: '30px',
       }}
       showUnder={160}
     >

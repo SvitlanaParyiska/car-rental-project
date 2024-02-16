@@ -9,24 +9,21 @@ import {
 } from './FilterCars.styled';
 import arrCarsBrand from '../../resources/makes.json';
 import priceArr from '../../resources/prices.json';
-import { useDispatch } from 'react-redux';
 
 import Form from 'react-bootstrap/Form';
 import Select from 'react-select';
 import { getOptions } from 'helpers/filterHelpers';
 import { brandCustomStyle, priceCustomStyle } from './FilterCustomStyles';
-import { getCarsByFilter } from '../../redux/catalogSlice';
 
-function FilterCars() {
+function FilterCars({ getCarsByFilter }) {
   const [brand, setBrand] = useState('');
   const [price, setPrice] = useState('');
   const [maxMileage, setMaxMileage] = useState('');
   const [minMileage, setMinMileage] = useState('');
-  const dispatch = useDispatch();
 
   const searchCars = event => {
     event.preventDefault();
-    dispatch(getCarsByFilter({ brand, price, maxMileage, minMileage }));
+    getCarsByFilter(brand, price, maxMileage, minMileage);
   };
 
   const brandOptions = getOptions(arrCarsBrand, 'All brand');

@@ -1,12 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getCatalog, getTotalPages } from './catalogOperations';
-import { getNotiflixMessage } from 'helpers/notiflixHelpers';
 
 const catalogInitialState = {
   allCars: [],
   cars: [],
   carsFavorites: [],
-  filterCars: [],
   isLoading: false,
   error: null,
   totalPages: 0,
@@ -33,31 +31,8 @@ const catalogSlice = createSlice({
       state.carsFavorites.push({ ...payload });
     },
 
-    clearFiltersCars(state, _) {
-      state.filterCars = [];
-    },
     clearCars(state, _) {
       state.cars = [];
-    },
-    getCarsByFilter(state, { payload }) {
-      const carsByFilter = state.allCars.filter(
-        item =>
-          (item.make === payload.brand || !payload.brand) &&
-          (Number(item.rentalPrice.slice(1)) <= Number(payload.price) ||
-            !payload.price) &&
-          (item.mileage <= Number(payload.maxMileage) || !payload.maxMileage) &&
-          (item.mileage >= Number(payload.minMileage) || !payload.minMileage)
-      );
-      if (carsByFilter.length > 0) {
-        state.filterCars = carsByFilter;
-      } else {
-        state.filterCars = [];
-        // state.cars = [];
-        getNotiflixMessage(
-          'info',
-          'Sorry, nothing ... Try change filter params!'
-        );
-      }
     },
   },
 
@@ -81,12 +56,6 @@ const catalogSlice = createSlice({
   },
 });
 
-export const {
-  deleteFavorite,
-  addFavorite,
-  clearFiltersCars,
-  clearCars,
-  getCarsByFilter,
-} = catalogSlice.actions;
+export const { deleteFavorite, addFavorite, clearCars } = catalogSlice.actions;
 
 export const catalogReducer = catalogSlice.reducer;

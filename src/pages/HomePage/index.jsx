@@ -1,10 +1,10 @@
 import React from 'react';
-import { HomePageBox, LinkStyled, Section, TitleHome } from './HomePage.styled';
+import { LinkStyled, Section, TitleHome } from './HomePage.styled';
 
 function HomePage() {
   return (
     <Section>
-      <HomePageBox className="container">
+      <div className="container">
         <h1 className="visually-hidden">About us</h1>
         <TitleHome>
           <h2>
@@ -13,7 +13,7 @@ function HomePage() {
           <p>Easy way to travel with comfort </p>
           <LinkStyled to="/catalog">Find a car</LinkStyled>
         </TitleHome>
-      </HomePageBox>
+      </div>
     </Section>
   );
 }

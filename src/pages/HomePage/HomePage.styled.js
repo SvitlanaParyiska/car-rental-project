@@ -14,14 +14,6 @@ export const Section = styled.section`
   background-size: cover;
 `;
 
-export const HomePageBox = styled.div`
-  h2 {
-    font-weight: 500;
-    font-size: 26px;
-    color: #fff;
-  }
-`;
-
 export const TitleHome = styled.div`
   max-width: 400px;
   margin-right: auto;
@@ -29,21 +21,33 @@ export const TitleHome = styled.div`
   text-align: center;
 
   > h2 {
-    font-size: 22px;
+    font-size: 16px;
     margin-top: 20px;
     color: #fff;
 
+    @media screen and (min-width: 768px) {
+      font-size: 22px;
+    }
+
     > span {
       display: block;
-      font-size: 28px;
+      font-size: 20px;
       margin-top: 10px;
+
+      @media screen and (min-width: 768px) {
+        font-size: 28px;
+      }
     }
   }
 
   > p {
-    font-size: 22px;
+    font-size: 16px;
     margin-top: 30px;
     color: #fff;
+
+    @media screen and (min-width: 768px) {
+      font-size: 22px;
+    }
   }
 `;
 

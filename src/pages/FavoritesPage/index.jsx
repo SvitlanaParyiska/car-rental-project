@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectCarsFavorites } from '../../redux/catalogSelectors';
 import CatalogList from 'components/CatalogList';
 import ScrollUp from 'components/ScrollUp';
+import { TitleStyled } from './FavoritePage.styled';
 
 function FavoritesPage() {
   const favCars = useSelector(selectCarsFavorites);
@@ -12,9 +13,7 @@ function FavoritesPage() {
       <div className="container">
         {favCars.length > 0 ? (
           <>
-            <h1 style={{ marginBottom: '50px', textAlign: 'center' }}>
-              Your favorites cars
-            </h1>
+            <TitleStyled>Your favorites cars</TitleStyled>
             <CatalogList arrayToRender={favCars} />
             <ScrollUp />
           </>

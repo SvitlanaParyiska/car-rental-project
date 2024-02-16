@@ -16,5 +16,8 @@
 <symbol id="icon-angles-up-solid" viewBox="0 0 28 32">
 <path d="M15.412 2.587c-0.781-0.781-2.050-0.781-2.831 0l-10 10c-0.781 0.781-0.781 2.050 0 2.831s2.050 0.781 2.831 0l8.587-8.588 8.587 8.581c0.781 0.781 2.050 0.781 2.831 0s0.781-2.050 0-2.831l-10-10zM25.413 24.587l-10-10c-0.781-0.781-2.050-0.781-2.831 0l-10 10c-0.781 0.781-0.781 2.050 0 2.831s2.050 0.781 2.831 0l8.587-8.588 8.587 8.581c0.781 0.781 2.050 0.781 2.831 0s0.781-2.050 0-2.831z"></path>
 </symbol>
+<symbol id="icon-burger-menu" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M4 16h16M4 8h24M4 24h24"></path>
+</symbol>
 </defs>
 </svg>
