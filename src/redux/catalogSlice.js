@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getCatalog, getTotalPages } from './catalogOperations';
-import Notiflix from 'notiflix';
+import { getNotiflixMessage } from 'helpers/notiflixHelpers';
 
 const catalogInitialState = {
   allCars: [],
@@ -52,10 +52,11 @@ const catalogSlice = createSlice({
         state.filterCars = carsByFilter;
       } else {
         state.filterCars = [];
-        state.cars = [];
-        Notiflix.Notify.info('Sorry, nothing ... Try change filter params!', {
-          timeout: 2000,
-        });
+        // state.cars = [];
+        getNotiflixMessage(
+          'info',
+          'Sorry, nothing ... Try change filter params!'
+        );
       }
     },
   },

@@ -8,12 +8,11 @@ import { useSelector } from 'react-redux';
 import {
   selectCars,
   selectFilterCars,
-  selectIsLoading,
   selectTotalPages,
 } from '../../redux/catalogSelectors';
 import { clearCars, clearFiltersCars } from '../../redux/catalogSlice';
 import ScrollUp from 'components/ScrollUp';
-import Loader from 'components/Loader';
+
 
 function CatalogPage() {
   const [page, setPage] = useState(1);
@@ -22,7 +21,6 @@ function CatalogPage() {
   const arrayToRender = useSelector(selectCars);
   const arrayToRenderByFilter = useSelector(selectFilterCars);
   const totalPages = useSelector(selectTotalPages);
-  const loading = useSelector(selectIsLoading);
 
   useEffect(() => {
     if (!arrayToRenderByFilter.length > 0) {
@@ -46,7 +44,6 @@ function CatalogPage() {
   return (
     <section>
       <div className="container">
-        {loading && <Loader />}
         <h1 className="visually-hidden">Catalog</h1>
         <FilterCars />
         {arrayToRenderByFilter.length > 0 ? (
